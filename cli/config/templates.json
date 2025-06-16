@@ -1,0 +1,20 @@
+{
+  "templates": {
+    "standard": {
+      "repository": "https://github.com/yourusername/icp-boiler-plate.git",
+      "branch": "main",
+      "description": "Standard ICP application with React frontend and Motoko backend"
+    },
+    "minimal": {
+      "repository": "https://github.com/yourusername/icp-minimal-template.git",
+      "branch": "main",
+      "description": "Minimal ICP application with basic frontend and backend"
+    },
+    "next": {
+      "repository": "https://github.com/yourusername/icp-next-template.git",
+      "branch": "main",
+      "description": "ICP application with Next.js frontend and Motoko backend"
+    }
+  },
+  "defaultTemplate": "standard"
+}
