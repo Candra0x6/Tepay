@@ -1,7 +1,3 @@
-# Tepay Canisters Documentation
-Absolutely! Here's a **marketing-style README** for your GitHub project **Tepay**, written to be clear, engaging, and developer-friendly while showcasing its features:
-
----
 
 # Tepay
 
