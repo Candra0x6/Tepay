@@ -116,8 +116,8 @@ See [LICENSE](./LICENSE) for details.
 
 ## 🙌 Team
 
- Kurniawan Candra Mahardika (Developer)
- Fahreza Andreansyah (Developer)
- Ardian Gymnastiar (Designer)
+- Kurniawan Candra Mahardika (Developer)
+- Fahreza Andreansyah (Developer)
+- Ardian Gymnastiar (Designer)
 
 ---
