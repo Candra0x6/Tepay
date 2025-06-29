@@ -57,11 +57,11 @@ The Tepay platform is built on the Internet Computer Protocol (ICP) using Motoko
 
 ## Canister Documentation
 
-- [Alias Registry](./alias-registry.md) - User alias management system
-- [Analytics Logger](./analytics-logger.md) - Event tracking and analytics
-- [Authentication](./auth.md) - User authentication and profiles
-- [Token](./token.md) - ICRC-1/ICRC-2 token implementation
-- [Types](./types.md) - Shared type definitions
+- [Alias Registry](./docs/alias-registry.md) - User alias management system
+- [Analytics Logger](./docs/analytics-logger.md) - Event tracking and analytics
+- [Authentication](./docs/auth.md) - User authentication and profiles
+- [Token](./docs/token.md) - ICRC-1/ICRC-2 token implementation
+- [Types](./docs/types.md) - Shared type definitions
 
 ---
 
