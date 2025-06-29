@@ -61,16 +61,6 @@ The Tepay platform is built on the Internet Computer Protocol (ICP) using Motoko
 
 ---
 
-## Deployment
-
-The canisters are configured in `dfx.json` and can be deployed using the DFX CLI:
-
-```bash
-dfx deploy
-```
-
----
-
 ## Development
 
 - Language: Motoko
