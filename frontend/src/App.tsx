@@ -1,20 +1,26 @@
-import { useAuth, AuthProvider } from "./utility/use-auth-client";
+import { useAuth, AuthProvider } from "./hooks/use-auth-client";
 import {
   BrowserRouter,
   Route,
   Routes,
   useLocation,
+  useNavigate,
 } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-
+import { auth } from "@declarations/auth";
 // Others
-
-import { RegistrationProvider } from "./utility/RegistrationContext";
-import InternetIdentityPage from "./pages/auth/internet-identity-login";
-
-  import { backend } from "@declarations/backend";
-
+import { RegistrationProvider } from "./utils/RegistrationContext";
+import { Toaster } from "react-hot-toast";
+import CryptoPage from "./pages/landing-page";
+import DashboardPage from "./pages/dashboard/dashboard-page";
+import Navbar from "./components/elements/navigation-bar";
+import Footer from "./components/elements/footer";
+import CryptoCard from "./components/wallet-card";
+import LandingPage from "./pages/landing-page";
+import ProtectedRoute from "./utils/ProtectedRoute";
+import PaymentPage from "./pages/send/send-link-page";
+import { NameSetupPage } from "./pages/name-setup/name-setup-page";
 
 const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
   useEffect(() => {
@@ -40,37 +46,34 @@ const AnimatedRoutes: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const { isAuthenticated } = useAuth();
 
-
   return (
     <>
-
       {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
 
       <AnimatePresence mode="wait">
-
-        {/* <Navbar /> */}
+        <Navbar />
         {!loading && (
           <Routes location={location} key={location.pathname}>
             {/* DEFAULT PAGES SECTION */}
 
-            <Route path="/" element={
-                <div className="">
-                  <h1>Hello World</h1>
-                </div>
-              
-            } />
-
-        
+            <Route path="/" element={<LandingPage />} />
             <Route
-              path="/internet-identity"
+              path="/dashboard"
               element={
-                <div className="">
-                  <InternetIdentityPage />
-                </div>
+                <ProtectedRoute isAuthenticated={isAuthenticated}>
+                  <DashboardPage />
+                </ProtectedRoute>
               }
             />
-
-         
+            <Route
+              path="/name-setup"
+              element={
+                <ProtectedRoute isAuthenticated={isAuthenticated}>
+                  <NameSetupPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/send/:alias" element={<PaymentPage />} />
           </Routes>
         )}
       </AnimatePresence>
@@ -79,22 +82,18 @@ const AnimatedRoutes: React.FC = () => {
 };
 
 const App: React.FC = () => {
-  const auth = useAuth();
+  const { isAuthenticated, principal } = useAuth();
+  //  State to track if the user is registered - Temporary unused right now
   const [isRegistered, setIsRegistered] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
-
   if (!auth) return null;
-
-  const { isAuthenticated, principal } = auth;
-  console.log("isAuthenticated ", isAuthenticated);
 
   useEffect(() => {
     const checkIfRegistered = async () => {
       if (isAuthenticated && principal) {
         try {
-
           // @ts-ignore
-          const result = await backend.getUserByPrincipal(principal);
+          const result = await auth.getUserByPrincipal(principal);
           result ? setIsRegistered(true) : setIsRegistered(false);
         } catch (error) {
           console.error("Error checking registration:", error);

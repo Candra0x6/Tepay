@@ -3,8 +3,8 @@ import ReactDOM from "react-dom/client";
 import "../index.css";
 import App from "./App";
 import { ActorProvider, AgentProvider } from "@ic-reactor/react";
-import { canisterId, idlFactory } from "../../src/declarations/backend"
-import '@react-pdf-viewer/core/lib/styles/index.css';
+import { idlFactory, canisterId } from "@declarations/auth";
+import "@react-pdf-viewer/core/lib/styles/index.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>

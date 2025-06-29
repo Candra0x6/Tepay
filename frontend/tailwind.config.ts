@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-	darkMode: ["class"],
+	darkMode: "class",
 	content: [
 		"./pages/**/*.{js,ts,jsx,tsx,mdx}",
 		"./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -91,6 +91,20 @@ const config: Config = {
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [
+		require("tailwindcss-animate"),
+		function ({ addUtilities }: { addUtilities: (utilities: Record<string, any>) => void }) {
+			const newUtilities = {
+				'.border-outer': {
+					'border-width': '4px',
+					'border-color': '#000000',
+					'border-radius': '1rem',
+					'padding': '0.5rem',
+					'box-shadow': '8px 8px 0px 0px rgba(0,0,0,1)'
+				}
+			}
+			addUtilities(newUtilities)
+		}
+	],
 };
 export default config;

@@ -4,8 +4,11 @@ import { fileURLToPath, URL } from "url";
 import environment from "vite-plugin-environment";
 import path from "path";
 import tailwindcss from "@tailwindcss/vite"
+
+const isLocal = process.env.DFX_NETWORK === "local";
+const proxyTarget = isLocal ? "http://127.0.0.1:4943" : "https://icp0.io";
+
 export default defineConfig({
-  base: "./",
   plugins: [
     react(),
     environment("all", { prefix: "CANISTER_" }),
@@ -32,10 +35,9 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://127.0.0.1:4943",
+        target: proxyTarget,
         changeOrigin: true,
       },
     },
-    host: "127.0.0.1",
   },
 });

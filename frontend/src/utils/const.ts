@@ -1,0 +1,17 @@
+export const iconOptions = [
+  { emoji: "😊", name: "Smile", color: "bg-yellow-500" },
+  { emoji: "❤️", name: "Heart", color: "bg-red-500" },
+  { emoji: "⭐", name: "Star", color: "bg-blue-500" },
+  { emoji: "🎁", name: "Gift", color: "bg-purple-500" },
+  { emoji: "☕", name: "Coffee", color: "bg-amber-600" },
+  { emoji: "🎵", name: "Music", color: "bg-pink-500" },
+  { emoji: "📷", name: "Camera", color: "bg-gray-600" },
+  { emoji: "🎨", name: "Palette", color: "bg-green-500" },
+  { emoji: "⚡", name: "Zap", color: "bg-orange-500" },
+  { emoji: "👑", name: "Crown", color: "bg-indigo-500" },
+  { emoji: "🔥", name: "Fire", color: "bg-red-600" },
+  { emoji: "💎", name: "Diamond", color: "bg-cyan-500" },
+  { emoji: "🚀", name: "Rocket", color: "bg-blue-600" },
+  { emoji: "🌟", name: "Sparkle", color: "bg-yellow-400" },
+  { emoji: "💰", name: "Money", color: "bg-green-600" },
+];

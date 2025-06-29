@@ -1,88 +1,35 @@
   {
     "canisters": {
-      "nft_canister": {
-        "main": "backend/canisters/nft/main.mo",
-        "type": "motoko",
-        "declarations": {
-          "node_compatibility": true
-        },
-        "dependencies": ["msme_registration", "token_canister"],
-        "remote": {
-          "id": {
-            "ic": "ucwa4-rx777-77774-qaada-cai"
-          }
-        }
+      "alias_registry": {
+        "main": "backend/canisters/alias_registry.mo",
+        "type": "motoko"
       },
-      "token_canister": {
-        "main": "backend/canisters/token/main.mo",
-        "type": "motoko",
-        "remote": {
-          "id": {
-            "ic": "vizcg-th777-77774-qaaea-cai"
-          }
-        }
+      "analytics_logger": {
+        "main": "backend/canisters/analytics_logger.mo",
+        "type": "motoko"
       },
-      "msme_registration": {
-        "main": "backend/canisters/msme_registration/main.mo",
-        "type": "motoko",
-        "remote": {
-          "id": {
-            "ic": "ulvla-h7777-77774-qaacq-cai"
-          }
-        }
-      },
-      "revenue_reporting": {
-        "main": "backend/canisters/revenue_reporting/main.mo",
-        "type": "motoko",
-        "dependencies": ["token_canister", "msme_registration", "nft_canister", "authentication"],
-        "remote": {
-          "id": {
-            "ic": "ufxgi-4p777-77774-qaadq-cai"
-          }
-        }
-      },
-      "asset_storage": {
-        "main": "backend/canisters/asset_storage/main.mo",
-        "type": "motoko",
-        "remote": {
-          "id": {
-            "ic": "uxrrr-q7777-77774-qaaaq-cai"
-          }
-        }
-      },
-      "authentication": {
-        "main": "backend/canisters/authentication/main.mo",
-        "type": "motoko",
-        "remote": {
-          "id": {
-            "ic": "u6s2n-gx777-77774-qaaba-cai"
-          }
-        }
-      },
-      "verification_workflow": {
-        "main": "backend/canisters/verification_workflow/main.mo",
-        "type": "motoko",
-        "dependencies": ["authentication", "msme_registration"],
-        "remote": {
-          "id": {
-            "ic": "vpyes-67777-77774-qaaeq-cai"
-          }
-        }
-      },
-      "backend": {
-        "main": "backend/app.mo",
+      "auth": {
+        "main": "backend/canisters/auth.mo",
         "type": "motoko",
         "args": "--enhanced-orthogonal-persistence"
+
       },
+
+      "token": {
+        "main": "backend/canisters/token.mo",
+        "type": "motoko"
+      },
+
       "frontend": {
-        "dependencies": ["backend"],
+        "dependencies": ["auth"],
         "frontend": {
           "entrypoint": "frontend/index.html"
         },
         "source": ["frontend/dist"],
-        "type": "assets"
-      },
+        "type": "assets",
+        "workspace": "frontend"
 
+      },
       "internet_identity": {
         "candid": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity.did",
         "type": "custom",
@@ -95,6 +42,8 @@
         "wasm": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity_dev.wasm.gz"
       }
     },
+
+
     "output_env_file": ".env",
     "defaults": {
       "build": {
