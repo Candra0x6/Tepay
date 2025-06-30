@@ -97,6 +97,8 @@ dfx deploy
 ```
 
 More setup instructions coming soon in the [Docs](./docs).
+---
+White Paper https://www.notion.so/Tepay-22148a1396978061a33be9e290395ab4?source=copy_link
 
 ---
 
